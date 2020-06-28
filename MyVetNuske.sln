@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyVetNuske.Common", "MyVetNuske.Common\MyVetNuske.Common.csproj", "{0985F9AD-16AE-48D1-9F48-3B2014AFEB60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyVetNuske.Web", "MyVetNuske.Web\MyVetNuske.Web.csproj", "{C6C66D07-20B0-4B17-B9F9-E4876296E5B8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0985F9AD-16AE-48D1-9F48-3B2014AFEB60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0985F9AD-16AE-48D1-9F48-3B2014AFEB60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0985F9AD-16AE-48D1-9F48-3B2014AFEB60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0985F9AD-16AE-48D1-9F48-3B2014AFEB60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6C66D07-20B0-4B17-B9F9-E4876296E5B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6C66D07-20B0-4B17-B9F9-E4876296E5B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6C66D07-20B0-4B17-B9F9-E4876296E5B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6C66D07-20B0-4B17-B9F9-E4876296E5B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {47233B16-FA46-48F8-A706-54E7B1EC5358}
+	EndGlobalSection
+EndGlobal

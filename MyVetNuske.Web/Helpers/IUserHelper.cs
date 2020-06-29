@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using MyVetNuske.Web.Data.Entities;
+using MyVetNuske.Web.Models;
 using System.Threading.Tasks;
 
 namespace MyVetNuske.Web.Helpers
@@ -15,6 +16,11 @@ namespace MyVetNuske.Web.Helpers
         Task AddUserToRoleAsync(User user, string roleName);
 
         Task<bool> IsUserInRoleAsync(User user, string roleName);
+
+        Task<SignInResult> LoginAsync(LoginViewModel model);
+
+        Task LogoutAsync();
+
     }
 
 }

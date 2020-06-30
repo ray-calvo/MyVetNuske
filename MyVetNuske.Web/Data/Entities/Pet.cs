@@ -31,7 +31,7 @@ namespace MyVetNuske.Web.Data.Entities
             : $"https://TBD.azurewebsites.net{ImageUrl.Substring(1)}";
 
         [Display(Name = "Fecha Nacimiento")]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm}")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime BornLocal => Born.ToLocalTime();
 
         public PetType PetType { get; set; }

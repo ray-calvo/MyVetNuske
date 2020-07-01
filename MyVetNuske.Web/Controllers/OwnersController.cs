@@ -125,6 +125,7 @@ namespace MyVetNuske.Web.Controllers
                 ModelState.AddModelError(string.Empty, response.Errors.FirstOrDefault().Description);
             }
 
+            
             return View(model);
         }
 
@@ -259,6 +260,8 @@ namespace MyVetNuske.Web.Controllers
                 return RedirectToAction($"Details/{model.OwnerId}");
             }
 
+            model.PetTypes = _combosHelper.GetComboPetTypes();
+            model.RaceTypes = _combosHelper.GetComboRaceTypes();
             return View(model);
         }
 
@@ -295,7 +298,31 @@ namespace MyVetNuske.Web.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction($"Details/{model.OwnerId}");
             }
+            model.PetTypes = _combosHelper.GetComboPetTypes();
+            model.RaceTypes = _combosHelper.GetComboRaceTypes();
             return View(model);
         }
+        public async Task<IActionResult> DetailsPet(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var pet = await _context.Pets
+                .Include(p => p.Owner)
+                .ThenInclude(o => o.User)
+                .Include(p => p.Histories)
+                .ThenInclude(h => h.ServiceType)
+                .Include(p => p.RaceType)
+                .FirstOrDefaultAsync(o => o.Id == id.Value);
+            if (pet == null)
+            {
+                return NotFound();
+            }
+
+            return View(pet);
+        }
+
     }
 }

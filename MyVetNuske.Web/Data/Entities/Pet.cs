@@ -18,7 +18,6 @@ namespace MyVetNuske.Web.Data.Entities
 
         [Display(Name = "Fecha Nacimiento")]
         [Required(ErrorMessage = "The field {0} is mandatory.")]
-        [DataType(DataType.DateTime)]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime Born { get; set; }
 
@@ -34,11 +33,16 @@ namespace MyVetNuske.Web.Data.Entities
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]
         public DateTime BornLocal => Born.ToLocalTime();
 
+        [Display(Name = "Especie")]
         public PetType PetType { get; set; }
+
+        [Display(Name = "Raza")]
         public RaceType RaceType { get; set; }
 
+        [Display(Name = "Propietario")]
         public Owner Owner { get; set; }
         public ICollection<History> Histories { get; set; }
+        public ICollection<Agenda> Agendas { get; set; }
 
 
 

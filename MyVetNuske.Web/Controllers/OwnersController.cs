@@ -183,7 +183,6 @@ namespace MyVetNuske.Web.Controllers
             return View(owner);
         }
 
-        // GET: Owners/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -192,25 +191,28 @@ namespace MyVetNuske.Web.Controllers
             }
 
             var owner = await _context.Owners
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .Include(o => o.Pets)
+                .Include(o => o.User)
+                .FirstOrDefaultAsync(o => o.Id == id.Value);
             if (owner == null)
             {
                 return NotFound();
             }
 
-            return View(owner);
-        }
+            if (owner.Pets.Count >0)
+            {
+                ModelState.AddModelError(String.Empty, "The owner cant be removed");
+                return RedirectToAction(nameof(Index));
+            }
 
-        // POST: Owners/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var owner = await _context.Owners.FindAsync(id);
+            await _userHelper.DeleteUserAsync(owner.User.Email);
             _context.Owners.Remove(owner);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction($"{nameof(Index)}");
         }
+
+
+        
 
         private bool OwnerExists(int id)
         {

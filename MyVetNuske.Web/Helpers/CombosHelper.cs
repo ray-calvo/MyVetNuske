@@ -53,5 +53,23 @@ namespace MyVetNuske.Web.Helpers
             return list;
         }
 
+        public IEnumerable<SelectListItem> GetComboServiceTypes()
+        {
+            var list = _dataContext.ServiceTypes.Select(p => new SelectListItem
+            {
+                Text = p.Name,
+                Value = p.Id.ToString()
+            }).OrderBy(p => p.Text).ToList();
+
+            list.Insert(0, new SelectListItem
+            {
+                Text = "(Select a service type...)",
+                Value = "0"
+            });
+
+            return list;
+        }
+
+
     }
 }

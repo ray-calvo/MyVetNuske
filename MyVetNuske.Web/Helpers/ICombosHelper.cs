@@ -7,5 +7,7 @@ namespace MyVetNuske.Web.Helpers
     {
         IEnumerable<SelectListItem> GetComboPetTypes();
         IEnumerable<SelectListItem> GetComboRaceTypes();
+        IEnumerable<SelectListItem> GetComboServiceTypes();
+
     }
 }

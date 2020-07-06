@@ -24,10 +24,10 @@ namespace MyVetNuske.Web.Data.Entities
         [Display(Name = "Comentarios")]
         public string Remarks { get; set; }
 
-        //TODO: replace the correct URL for the image
+        
         public string ImageFullPath => string.IsNullOrEmpty(ImageUrl)
             ? null
-            : $"https://TBD.azurewebsites.net{ImageUrl.Substring(1)}";
+            : $"https://myvetnuske.azurewebsites.net{ImageUrl.Substring(1)}";
 
         [Display(Name = "Fecha Nacimiento")]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}")]

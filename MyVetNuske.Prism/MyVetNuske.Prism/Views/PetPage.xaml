@@ -5,5 +5,36 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="MyVetNuske.Prism.Views.PetPage"
              Title="{Binding Title}">
-  
+
+    <StackLayout
+    	Padding="10">
+        <Frame
+        	CornerRadius="20"
+        	HasShadow="True">
+            <StackLayout>
+                <StackLayout
+                	Orientation="Horizontal">
+                    <Image
+                    	WidthRequest="180"
+                    	Source="{Binding Pet.ImageUrl}"/>
+                    <StackLayout>
+                        <Label
+                        	FontAttributes="Bold"
+                        	FontSize="Large"
+                        	Text="{Binding Pet.Name}"/>
+                        <Label
+                        	Text="{Binding Pet.RaceType, StringFormat='Race: {0}'}"/>
+                        <Label
+                        	Text="{Binding Pet.Born, StringFormat='Born: {0:yyyy/MM/dd}'}"/>
+                        <Label
+                        	Text="{Binding Pet.PetType, StringFormat='Type: {0}'}"/>
+                    </StackLayout>
+                </StackLayout>
+                <Label
+                	BackgroundColor="White"
+                	Text="{Binding Pet.Remarks}"/>
+            </StackLayout>
+        </Frame>
+        
+    </StackLayout>
 </ContentPage>

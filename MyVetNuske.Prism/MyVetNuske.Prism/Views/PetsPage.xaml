@@ -21,7 +21,9 @@
                             CornerRadius="10"
                             HasShadow="True"
                             Margin="0,0,0,5">
-                            
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectPetCommand}"/>
+                            </Frame.GestureRecognizers>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
@@ -68,12 +70,7 @@
                                 </Grid>
                                 <Image
                                     Grid.Column="2"
-                                    Source="ic_chevron_right">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding SelectPetCommand}"/>
-                                    </Image.GestureRecognizers>
-
-                                </Image>
+                                    Source="ic_chevron_right"/>
                             </Grid>
                         </Frame>
                     </ViewCell>

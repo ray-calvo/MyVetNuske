@@ -22,10 +22,15 @@
             Text="{Binding Password}"/>
         
         <Button
+            BorderRadius="23"
+            BackgroundColor="Navy"
             VerticalOptions="EndAndExpand"
             IsEnabled="{Binding IsEnabled}"
+            FontAttributes="Bold"
+            HeightRequest="46"
             Command="{Binding LoginCommand}"
-            Text="Login"/>
+            Text="Login"
+            TextColor="White"/>
     </StackLayout>
   
 </ContentPage>

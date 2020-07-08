@@ -8,6 +8,7 @@ namespace MyVetNuske.Prism.ViewModels
 {
     public class LoginPageViewModel : ViewModelBase
     {
+        private readonly INavigationService _navigationService;
         private readonly IApiService _apiService;
         private string _password;
         private bool _isRunning;
@@ -19,9 +20,15 @@ namespace MyVetNuske.Prism.ViewModels
             INavigationService navigationService,
             IApiService apiService) : base(navigationService)
         {
+            _navigationService = navigationService;
             _apiService = apiService;
             Title = "Login";
             IsEnabled = true;
+
+            //TODO: Delete those lines
+            Email = "dr.calvo@veterinarianuske.com";
+            Password = "123456";
+
 
         }
         public DelegateCommand LoginCommand => _loginCommand ?? (_loginCommand = new DelegateCommand(Login));
@@ -89,7 +96,7 @@ namespace MyVetNuske.Prism.ViewModels
 
             var token = (TokenResponse)response.Result;
 
-            var response2 = await _apiService.GetOwnerByEmail(
+            var response2 = await _apiService.GetOwnerByEmailAsync(
                 url,
                 "/api",
                 "/Owners/GetOwnerByEmail",
@@ -99,13 +106,20 @@ namespace MyVetNuske.Prism.ViewModels
 
             // ReSharper disable once UnusedVariable
             var owner = (OwnerResponse)response2.Result;
+            var parameters = new NavigationParameters
+            {
+                { "owner", owner }
+            };
+
+
 
             IsEnabled = true;
             //IsRunning = false;
             UserDialogs.Instance.HideLoading();
 
             // ReSharper disable once AccessToStaticMemberViaDerivedType
-            await App.Current.MainPage.DisplayAlert("Ok", "We are making progress!", "Accept");
+            await _navigationService.NavigateAsync("PetsPage",parameters);
+            Password = string.Empty;
         }
     }
 

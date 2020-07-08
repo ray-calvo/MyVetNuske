@@ -22,6 +22,7 @@
             Text="{Binding Password}"/>
         
         <Button
+            VerticalOptions="EndAndExpand"
             IsEnabled="{Binding IsEnabled}"
             Command="{Binding LoginCommand}"
             Text="Login"/>

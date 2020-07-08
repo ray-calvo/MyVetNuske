@@ -73,6 +73,18 @@ namespace MyVetNuske.Prism.ViewModels
             //IsRunning = true;
             IsEnabled = false;
 
+            var url = App.Current.Resources["UrlAPI"].ToString();
+            var connection = await _apiService.CheckConnection(url);
+            if (!connection)
+            {
+                IsEnabled = true;
+                //IsRunning = false;
+                UserDialogs.Instance.HideLoading();
+                await App.Current.MainPage.DisplayAlert("Error", "Check the internet connection.", "Accept");
+                return;
+            }
+
+
             var request = new TokenRequest
             {
                 Password = Password,
@@ -80,7 +92,6 @@ namespace MyVetNuske.Prism.ViewModels
             };
 
             // ReSharper disable once AccessToStaticMemberViaDerivedType
-            var url = App.Current.Resources["UrlAPI"].ToString();
             var response = await _apiService.GetTokenAsync(url, "/Account", "/CreateToken", request);
 
             if (!response.IsSuccess)

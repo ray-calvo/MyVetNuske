@@ -5,7 +5,7 @@ namespace MyVetNuske.Common.Services
 {
     public interface IApiService
     {
-        Task<Response> GetOwnerByEmailAsync(
+        Task<Response<OwnerResponse>> GetOwnerByEmailAsync(
             string urlBase,
             string servicePrefix,
             string controller,
@@ -13,7 +13,7 @@ namespace MyVetNuske.Common.Services
             string accessToken,
             string email);
 
-        Task<Response> GetTokenAsync(
+        Task<Response<TokenResponse>> GetTokenAsync(
             string urlBase,
             string servicePrefix,
             string controller,

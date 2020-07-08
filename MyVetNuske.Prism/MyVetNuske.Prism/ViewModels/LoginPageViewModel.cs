@@ -105,7 +105,7 @@ namespace MyVetNuske.Prism.ViewModels
                 return;
             }
 
-            var token = (TokenResponse)response.Result;
+            var token = response.Result;
 
             var response2 = await _apiService.GetOwnerByEmailAsync(
                 url,
@@ -116,7 +116,7 @@ namespace MyVetNuske.Prism.ViewModels
                 Email);
 
             // ReSharper disable once UnusedVariable
-            var owner = (OwnerResponse)response2.Result;
+            var owner = response2.Result;
             var parameters = new NavigationParameters
             {
                 { "owner", owner }

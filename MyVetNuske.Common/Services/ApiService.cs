@@ -11,7 +11,7 @@ namespace MyVetNuske.Common.Services
 {
     public class ApiService : IApiService
     {
-        public async Task<Response> GetTokenAsync(
+        public async Task<Response<TokenResponse>> GetTokenAsync(
             string urlBase,
             string servicePrefix,
             string controller,
@@ -32,7 +32,7 @@ namespace MyVetNuske.Common.Services
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    return new Response
+                    return new Response<TokenResponse>
                     {
                         IsSuccess = false,
                         Message = result,
@@ -40,7 +40,7 @@ namespace MyVetNuske.Common.Services
                 }
 
                 var token = JsonConvert.DeserializeObject<TokenResponse>(result);
-                return new Response
+                return new Response<TokenResponse>
                 {
                     IsSuccess = true,
                     Result = token
@@ -48,7 +48,7 @@ namespace MyVetNuske.Common.Services
             }
             catch (Exception ex)
             {
-                return new Response
+                return new Response<TokenResponse>
                 {
                     IsSuccess = false,
                     Message = ex.Message
@@ -57,7 +57,7 @@ namespace MyVetNuske.Common.Services
             }
         }
 
-        public async Task<Response> GetOwnerByEmailAsync(
+        public async Task<Response<OwnerResponse>> GetOwnerByEmailAsync(
             string urlBase,
             string servicePrefix,
             string controller,
@@ -82,7 +82,7 @@ namespace MyVetNuske.Common.Services
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    return new Response
+                    return new Response<OwnerResponse>
                     {
                         IsSuccess = false,
                         Message = result,
@@ -90,7 +90,7 @@ namespace MyVetNuske.Common.Services
                 }
 
                 var owner = JsonConvert.DeserializeObject<OwnerResponse>(result);
-                return new Response
+                return new Response<OwnerResponse>
                 {
                     IsSuccess = true,
                     Result = owner
@@ -98,7 +98,7 @@ namespace MyVetNuske.Common.Services
             }
             catch (Exception ex)
             {
-                return new Response
+                return new Response<OwnerResponse>
                 {
                     IsSuccess = false,
                     Message = ex.Message

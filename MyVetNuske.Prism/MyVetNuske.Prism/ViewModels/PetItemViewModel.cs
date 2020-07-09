@@ -20,7 +20,7 @@ namespace MyVetNuske.Prism.ViewModels
         private async void SelecPet()
         {
             var parameters = new NavigationParameters { { "pet", this } };
-            await _navigationService.NavigateAsync("PetPage", parameters);
+            await _navigationService.NavigateAsync("HistoriesPage", parameters);
         }
     }
 }

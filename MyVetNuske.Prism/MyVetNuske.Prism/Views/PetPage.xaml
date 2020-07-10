@@ -4,6 +4,7 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="MyVetNuske.Prism.Views.PetPage"
+             IconImageSource="ic_action_pets"
              Title="{Binding Title}">
     <ScrollView>
         <StackLayout

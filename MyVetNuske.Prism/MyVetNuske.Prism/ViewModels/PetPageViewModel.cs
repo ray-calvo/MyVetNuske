@@ -1,5 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using MyVetNuske.Common.Helpers;
 using MyVetNuske.Common.Models;
+using Newtonsoft.Json;
 using Prism.Navigation;
 
 namespace MyVetNuske.Prism.ViewModels
@@ -7,9 +8,10 @@ namespace MyVetNuske.Prism.ViewModels
     public class PetPageViewModel : ViewModelBase
     {
         private PetResponse _pet;
-       // private ObservableCollection<HistoryItemViewModel> _histories;
+        // private ObservableCollection<HistoryItemViewModel> _histories;
         public PetPageViewModel(INavigationService navigationService) : base(navigationService)
         {
+            Title = "DEtails";
         }
 
         public PetResponse Pet
@@ -18,17 +20,12 @@ namespace MyVetNuske.Prism.ViewModels
             set => SetProperty(ref _pet, value);
         }
 
-      
+
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
-            if (parameters.ContainsKey("pet"))
-            {
-                Pet = parameters.GetValue<PetResponse>("pet");
-                Title = Pet.Name;
-
-            }
+            Pet = JsonConvert.DeserializeObject<PetResponse>(Settings.Pet);
         }
     }
 }

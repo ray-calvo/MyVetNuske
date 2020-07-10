@@ -1,4 +1,6 @@
-﻿using MyVetNuske.Common.Models;
+﻿using MyVetNuske.Common.Helpers;
+using MyVetNuske.Common.Models;
+using Newtonsoft.Json;
 using Prism.Commands;
 using Prism.Navigation;
 
@@ -19,8 +21,8 @@ namespace MyVetNuske.Prism.ViewModels
 
         private async void SelecPet()
         {
-            var parameters = new NavigationParameters { { "pet", this } };
-            await _navigationService.NavigateAsync("HistoriesPage", parameters);
+            Settings.Pet = JsonConvert.SerializeObject(this);
+            await _navigationService.NavigateAsync("PetTabbedPage");
         }
     }
 }
